@@ -15,22 +15,31 @@ import sae2_2.Graphe;
 public class GrapheParse {
 	
 
-	    public static Graphe parseGraphe(Class<? extends Graphe> clazz, File file)
-	            throws IOException, InvocationTargetException, InstantiationException, IllegalAccessException,
-	            IllegalArgumentException, NoSuchMethodException, SecurityException {
+	    public static Graphe parseGraphe(Class<? extends Graphe> clazz, File file) throws IOException,
+	    																				  InvocationTargetException,
+	    																				  InstantiationException,
+	    																				  IllegalAccessException,
+	    																				  IllegalArgumentException,
+	    																				  NoSuchMethodException,
+	    																				  SecurityException {
 	        
 	    	Graphe graphe = clazz.getConstructor().newInstance();
 	        BufferedReader br = null;
 
 	        try {
 	            br = new BufferedReader(new FileReader(file));
+	            
 	            Set<Arete> aretes = br.lines().skip(1).filter(line -> !line.equals("}"))
-	                    .map(line -> new Arete(getSommet1(line), getSommet2(line), getPoids(line)))
-	                    .collect(Collectors.toSet());
+	                    			.map(line -> new Arete(getSommet1(line), getSommet2(line), getPoids(line)))
+	                    			.collect(Collectors.toSet());
 	            
 	            graphe.creerGraphe(aretes);
-	        } finally {
-	            if (br != null)
+	            
+	        }
+	        
+	        finally {
+	            
+	        	if (br != null)
 	                br.close();
 	        }
 
@@ -39,16 +48,16 @@ public class GrapheParse {
 	        
 	    }
 
-	    private static String getSommet1(String str) {
-	        return str.substring(getIndexOf(str, "\"", 0) + 1, getIndexOf(str, "\"", 1));
+	    private static String getSommet1(String arete) {
+	        return arete.substring(getIndexOf(arete, "\"", 0) + 1, getIndexOf(arete, "\"", 1));
 	    }
 
-	    private static String getSommet2(String str) {
-	        return str.substring(getIndexOf(str, "\"", 2) + 1, getIndexOf(str, "\"", 3));
+	    private static String getSommet2(String arete) {
+	        return arete.substring(getIndexOf(arete, "\"", 2) + 1, getIndexOf(arete, "\"", 3));
 	    }
 
-	    private static Double getPoids(String str) {
-	        return Double.parseDouble(str.substring(str.indexOf("=") + 1, str.indexOf(",")));
+	    private static Double getPoids(String arete) {
+	        return Double.parseDouble(arete.substring(arete.indexOf("=") + 1, arete.indexOf(",")));
 	    }
 
 	    private static int getIndexOf(String line, String str, int n) {

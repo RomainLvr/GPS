@@ -101,6 +101,8 @@ public class Main {
 		System.out.println(grapheL.getSommets());
 		System.out.println(grapheL.getAretes());
 		
+		
+		
 		//GrapheListe gliste = new GrapheListe();
 		
 		//gliste.ajouteSommet("a");
