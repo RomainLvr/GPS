@@ -19,7 +19,6 @@ public class GrapheMatrice implements Graphe{
 		
 		dictionnaireDeSommets = new HashMap<String, Integer>();
 		matriceDAdjacence = new ArrayList<ArrayList <Double>>();
-		System.out.println("Constructeur...");
 	}
 
 	@Override
