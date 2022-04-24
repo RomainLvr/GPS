@@ -20,9 +20,19 @@ public class ParcoursLargeur extends ParcoursGraphe{
 	public boolean existeChemin(String sommet1, String sommet2) {
 
 		Boolean state = false;
-		if(plusCourtChemin(sommet1, sommet2) >= 0)
+		if(plusCourtChemin(sommet1, sommet2) >= 0) {
+			
 			state  = true;
+			System.out.println("Un chemin existe entre " + sommet1 + " et " + sommet2);
+		}
+		else {
+			
+			System.out.println("Aucun chemin n'existe entre " + sommet1 + " et " + sommet2);
+		}
+
+		
 		return state;
+		
 	}
 
 	@Override

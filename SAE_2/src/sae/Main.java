@@ -104,10 +104,15 @@ public class Main {
 		System.out.println(grapheL.getSommets());
 		System.out.println(grapheL.getAretes());
 		
-		ParcoursProfondeur pl = new ParcoursProfondeur(grapheM);
+		ParcoursProfondeur pp = new ParcoursProfondeur(grapheM);
 		
-		System.out.println(pl.existeChemin("Chanu", "Ifs"));
-		System.out.println(pl.plusCourtChemin("Chanu", "Ifs"));
+		//ParcoursLargeur pl = new ParcoursLargeur(grapheM);
+		
+		pp.existeChemin("Chanu", "Ifs");
+		pp.plusCourtChemin("Chanu", "Ifs");
+		
+		//System.out.println(pl.existeChemin("Chanu", "Ifs"));
+		//System.out.println(pl.plusCourtChemin("Chanu", "Ifs"));
 		
 		//GrapheListe gliste = new GrapheListe();
 		

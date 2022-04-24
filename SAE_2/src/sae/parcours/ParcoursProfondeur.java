@@ -19,8 +19,16 @@ public class ParcoursProfondeur extends ParcoursGraphe{
 		
 		Boolean state = false;
 		if(plusCourtChemin(sommet1, sommet2) >= 0) {
+			
 			state  = true;
+			System.out.println("Un chemin existe entre " + sommet1 + " et " + sommet2);
 		}
+		else {
+			
+			System.out.println("Aucun chemin n'existe entre " + sommet1 + " et " + sommet2);
+		}
+
+		
 		return state;
 	}
 
@@ -42,8 +50,10 @@ public class ParcoursProfondeur extends ParcoursGraphe{
 			checked.add(voisin);
 			unchecked.addAll(0, newCheck);
 			
+			System.out.println(checked.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2)));
 			if(checked.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2))) {
-				
+				System.out.println(checked.size());
+				System.out.println("Taille : " + checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum());
 				return checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum();
 			}
 		}
