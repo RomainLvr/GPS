@@ -6,9 +6,9 @@ import sae2_2.Arete;
 import sae2_2.Graphe;
 import sae2_2.Voisin;
 
-public class ParcoursLargeur extends ParcoursGraphe{
+public class ParcoursProfondeur extends ParcoursGraphe{
 
-	public ParcoursLargeur(Graphe arg0) {
+	public ParcoursProfondeur(Graphe arg0) {
 		super(arg0);
 		// TODO Auto-generated constructor stub
 	}
@@ -66,6 +66,5 @@ public class ParcoursLargeur extends ParcoursGraphe{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }
