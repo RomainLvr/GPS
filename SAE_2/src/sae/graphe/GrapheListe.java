@@ -1,4 +1,4 @@
-package graphe;
+package sae.graphe;
 
 import java.util.ArrayList;
 import java.util.Collection;

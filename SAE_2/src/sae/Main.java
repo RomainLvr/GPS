@@ -1,11 +1,14 @@
-package graphe;
+package sae;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
-
+import sae.graphe.GrapheListe;
+import sae.graphe.GrapheMatrice;
+import sae.parcours.ParcoursLargeur;
+import sae.parcours.ParcoursProfondeur;
 import sae2_2.Graphe;
 
 public class Main {
@@ -88,7 +91,7 @@ public class Main {
 		Scanner data = new Scanner(System.in);
 		String file = data.next();
             
-		File fil = new File("/home/romain/Bureau/SAE_2/Docs/ReseauxRoutiers/" + file);
+		File fil = new File("/home/romain/Bureau/SAE_2/Docs/donneesArtificielles/" + file);
 		
 		data.close();
 		
@@ -101,7 +104,10 @@ public class Main {
 		System.out.println(grapheL.getSommets());
 		System.out.println(grapheL.getAretes());
 		
+		ParcoursProfondeur pl = new ParcoursProfondeur(grapheM);
 		
+		System.out.println(pl.existeChemin("Chanu", "Ifs"));
+		System.out.println(pl.plusCourtChemin("Chanu", "Ifs"));
 		
 		//GrapheListe gliste = new GrapheListe();
 		

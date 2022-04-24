@@ -1,4 +1,4 @@
-package graphe;
+package sae;
 
 
 import java.io.BufferedReader;
