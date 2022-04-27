@@ -1,6 +1,7 @@
 package sae.parcours;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -12,7 +13,23 @@ import sae2_2.Graphe;
 import sae2_2.Voisin;
 
 public class ParcoursDijkstra extends ParcoursGraphe{
-
+	
+	Comparator<Arete> areteComparator = new Comparator<Arete>() {
+	
+		@Override
+		public int compare(Arete arg0, Arete arg1) {
+	
+			if(arg0.getPoids() < arg1.getPoids())
+				return 1;
+			else if(arg0.getPoids() > arg1.getPoids())
+				return -1;
+			return 0;
+		}
+	};
+    
+	Map<String, String> parents = new HashMap<String, String>();
+	Set<String> visited = new HashSet<String>();
+	PriorityQueue<Arete> temp = new PriorityQueue<Arete>(areteComparator);
 	
 	
 	public ParcoursDijkstra(Graphe graphe) {
@@ -29,18 +46,16 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	@Override
 	public Double plusCourtChemin(String sommet1, String sommet2) {
 		
-		Map<String, String> parents = new HashMap<String, String>();
-	    Set<String> visited = new HashSet<String>();
-	    PriorityQueue<Arete> temp = new PriorityQueue<Arete>();
+		
 
 	    Arete start = new Arete(sommet1, null, 0);
 	    temp.add(start);
 
 	    while (temp.size() > 0) {
 	    	Arete currentPathNode = temp.remove();
-
+	    	System.out.println(currentPathNode);
 	      if (!visited.contains(currentPathNode.getU())) {
-	        //String currentNode = currentPathNode.getU();
+	        String currentNode = currentPathNode.getU();
 	        parents.put(currentPathNode.getU(), currentPathNode.getV());
 	        visited.add(currentPathNode.getU());
 
@@ -59,7 +74,7 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	          temp.add(new Arete(neighbor.getEtiquette(), currentPathNode.getU(), distance2root));
 	        }
 
-	        System.out.println("current node: " + currentPathNode.getU());
+	        //System.out.println("current node: " + currentPathNode.getU());
 	        System.out.println("PriorityQueue: " + temp);
 	        System.out.println("Parents: " + parents);
 	        System.out.println("Visited: " + visited);
@@ -67,8 +82,8 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	      }
 	      
 	    }
-
-	    return null;
+	    System.out.println("Distance entre " + sommet1 + " et " + sommet2 + " : " + temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum());
+	    return temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum();
 	}
 
 }
