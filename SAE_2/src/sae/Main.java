@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import sae.graphe.GrapheListe;
 import sae.graphe.GrapheMatrice;
+import sae.parcours.ParcoursDijkstra;
 import sae.parcours.ParcoursLargeur;
 import sae.parcours.ParcoursProfondeur;
 import sae2_2.Graphe;
@@ -104,12 +105,14 @@ public class Main {
 		System.out.println(grapheL.getSommets());
 		System.out.println(grapheL.getAretes());
 		
-		ParcoursProfondeur pp = new ParcoursProfondeur(grapheM);
+		//ParcoursProfondeur pp = new ParcoursProfondeur(grapheM);
 		
-		//ParcoursLargeur pl = new ParcoursLargeur(grapheM);
+		ParcoursLargeur pl = new ParcoursLargeur(grapheM);
 		
-		pp.existeChemin("Chanu", "Ifs");
-		pp.plusCourtChemin("Chanu", "Ifs");
+		ParcoursDijkstra pd = new ParcoursDijkstra(grapheM);
+		
+		//pl.existeChemin("Chanu", "Ifs");
+		pd.plusCourtChemin("Chanu", "Ifs");
 		
 		//System.out.println(pl.existeChemin("Chanu", "Ifs"));
 		//System.out.println(pl.plusCourtChemin("Chanu", "Ifs"));

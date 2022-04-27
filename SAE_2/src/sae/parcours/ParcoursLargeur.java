@@ -50,7 +50,8 @@ public class ParcoursLargeur extends ParcoursGraphe{
 			unchecked = newCheck;
 			
 			if(checked.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2))) {
-				
+				System.out.println(checked.stream().map(Voisin::getEtiquette));
+				System.out.println("Taille : " + checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum());
 				return checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum();
 			}
 		}
