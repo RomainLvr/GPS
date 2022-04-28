@@ -92,8 +92,8 @@ public class Main {
 		Scanner data = new Scanner(System.in);
 		String file = data.next();
             
-		//File fil = new File("/home/romain/Bureau/SAE_2/Docs/ReseauxRoutiers/" + file);
-		File fil = new File("/home/romain/Bureau/SAE_2/Docs/donneesArtificielles/" + file);
+		File fil = new File("/home/romain/Bureau/SAE_2/Docs/ReseauxRoutiers/" + file);
+		//File fil = new File("/home/romain/Bureau/SAE_2/Docs/donneesArtificielles/" + file);
 
 		
 		data.close();
@@ -111,11 +111,11 @@ public class Main {
 		
 		ParcoursLargeur pl = new ParcoursLargeur(grapheM);
 		
-		ParcoursDijkstra pd = new ParcoursDijkstra(grapheM);
+		ParcoursDijkstra pd = new ParcoursDijkstra(grapheL);
 		
 		//pl.existeChemin("Chanu", "Ifs");
-		//pd.plusCourtChemin("CONDE-SUR-NOIRE", "CAEN");
-		pd.plusCourtChemin("CHANU", "CAEN");
+		pd.plusCourtChemin("CONDE-SUR-NOIRE", "CAEN");
+		//pd.plusCourtChemin("Chanu", "Caen");
 		
 		//System.out.println(pl.existeChemin("Chanu", "Ifs"));
 		//System.out.println(pl.plusCourtChemin("Chanu", "Ifs"));
