@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import sae2_2.Arete;
 import sae2_2.Graphe;
@@ -19,11 +21,7 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 		@Override
 		public int compare(Arete arg0, Arete arg1) {
 	
-			if(arg0.getPoids() < arg1.getPoids())
-				return 1;
-			else if(arg0.getPoids() > arg1.getPoids())
-				return -1;
-			return 0;
+			return Double.compare(arg0.getPoids(), arg1.getPoids());
 		}
 	};
     
@@ -46,29 +44,32 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	@Override
 	public Double plusCourtChemin(String sommet1, String sommet2) {
 		
-		
-
+		Double poids = null;
 	    Arete start = new Arete(sommet1, null, 0);
 	    temp.add(start);
 
 	    while (temp.size() > 0) {
 	    	Arete currentPathNode = temp.remove();
-	    	System.out.println(currentPathNode);
+	    	System.out.println("currentPathNode : " + currentPathNode);
 	      if (!visited.contains(currentPathNode.getU())) {
-	        String currentNode = currentPathNode.getU();
+	        Collection<Voisin> currentNode = graphe.getVoisins(currentPathNode.getU());
 	        parents.put(currentPathNode.getU(), currentPathNode.getV());
 	        visited.add(currentPathNode.getU());
 
 //	        return the shortest path if end node is reached
-//	        if (currentPathNode.getU().equals(sommet2)) {
-//	          return getPath(parents, sommet2);
-//	        }
+	        if (currentPathNode.getU().equals(sommet2)) {
+	        	System.out.println("Chemin : " + getPath(parents, sommet2));
+	  	      	//System.out.println("Poids : " + currentNode.getPoids());
+	        	//poids = currentNode.getPoids();
+	  	      	break;
+	        }
 
 	        Collection<Voisin> neighbors = graphe.getVoisins(currentPathNode.getU());
 	        for (Voisin voisin : neighbors) {
 	        	Voisin neighbor = voisin;
 
-	          Double distance2root = currentPathNode.getPoids();
+// à continuer	          Double distance2root = currentPathNode.getPoids() + currentNode.iterator().next().getPoids();
+	          System.out.println(distance2root);
 	          // PriorityQueue ensure that the node with shortest distance to the root is put at the
 	          // head of the queue
 	          temp.add(new Arete(neighbor.getEtiquette(), currentPathNode.getU(), distance2root));
@@ -82,8 +83,23 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	      }
 	      
 	    }
-	    System.out.println("Distance entre " + sommet1 + " et " + sommet2 + " : " + temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum());
-	    return temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum();
+	    //System.out.println("Distance entre " + sommet1 + " et " + sommet2 + " : " + temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum());
+	    //System.out.println(currentNode.getPoids());
+	    //return temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum();
+	    System.out.println(poids);
+	    return poids;
 	}
+	
+	
+	 private List<String> getPath(Map<String, String> parents, String sommet2) {
+		    List<String> chemin = new ArrayList<String>();
+		    String sommet = sommet2;
+		    while (sommet != null) {
+		    	chemin.add(0, sommet);
+		      String parent = parents.get(sommet);
+		      sommet = parent;
+		    }
+		    return chemin;
+		  }
 
 }

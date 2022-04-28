@@ -91,7 +91,7 @@ public class GrapheMatrice implements Graphe{
 		
 		System.out.println();
 		
-		//displayMatrice();
+		displayMatrice();
 		
 	}
 
@@ -170,6 +170,7 @@ public class GrapheMatrice implements Graphe{
 
 		return result;
 	}
+	
 	
 	public void displayMatrice() {
      
