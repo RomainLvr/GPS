@@ -55,7 +55,7 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	        Collection<Voisin> currentNode = graphe.getVoisins(currentPathNode.getU());
 	        parents.put(currentPathNode.getU(), currentPathNode.getV());
 	        visited.add(currentPathNode.getU());
-
+// test commit
 //	        return the shortest path if end node is reached
 	        if (currentPathNode.getU().equals(sommet2)) {
 	        	System.out.println("Chemin : " + getPath(parents, sommet2));
