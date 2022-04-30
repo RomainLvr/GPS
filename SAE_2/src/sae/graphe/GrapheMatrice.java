@@ -171,7 +171,7 @@ public class GrapheMatrice implements Graphe{
 		return result;
 	}
 	
-	
+
 	public void displayMatrice() {
      
 		for (Map.Entry<String, Integer> mapentry : dictionnaireDeSommets.entrySet()) {
