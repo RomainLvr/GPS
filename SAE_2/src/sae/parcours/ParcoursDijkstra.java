@@ -67,7 +67,7 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	        Collection<Voisin> neighbors = graphe.getVoisins(currentPathNode.getU());
 	        for (Voisin voisin : neighbors) {
 	        	Voisin neighbor = voisin;
-
+//test reload pc
 // à continuer	          Double distance2root = currentPathNode.getPoids() + currentNode.iterator().next().getPoids();
 	          System.out.println(distance2root);
 	          // PriorityQueue ensure that the node with shortest distance to the root is put at the
