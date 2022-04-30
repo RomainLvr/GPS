@@ -37,8 +37,11 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 
 	@Override
 	public boolean existeChemin(String sommet1, String sommet2) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		Boolean temoin = false;
+		if(plusCourtChemin(sommet1, sommet2) == null)
+			temoin = true;
+		return temoin;
 	}
 
 	@Override
@@ -49,44 +52,42 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	    temp.add(start);
 
 	    while (temp.size() > 0) {
+	    	
 	    	Arete currentPathNode = temp.remove();
-	    	System.out.println("currentPathNode : " + currentPathNode);
-	      if (!visited.contains(currentPathNode.getU())) {
-	        Collection<Voisin> currentNode = graphe.getVoisins(currentPathNode.getU());
-	        parents.put(currentPathNode.getU(), currentPathNode.getV());
-	        visited.add(currentPathNode.getU());
-// test commit
-//	        return the shortest path if end node is reached
-	        if (currentPathNode.getU().equals(sommet2)) {
-	        	System.out.println("Chemin : " + getPath(parents, sommet2));
-	  	      	//System.out.println("Poids : " + currentNode.getPoids());
-	        	//poids = currentNode.getPoids();
-	  	      	break;
-	        }
 
-	        Collection<Voisin> neighbors = graphe.getVoisins(currentPathNode.getU());
-	        for (Voisin voisin : neighbors) {
-	        	Voisin neighbor = voisin;
-//test reload pc
-// à continuer	          Double distance2root = currentPathNode.getPoids() + currentNode.iterator().next().getPoids();
-	          System.out.println(distance2root);
-	          // PriorityQueue ensure that the node with shortest distance to the root is put at the
-	          // head of the queue
-	          temp.add(new Arete(neighbor.getEtiquette(), currentPathNode.getU(), distance2root));
-	        }
-
-	        //System.out.println("current node: " + currentPathNode.getU());
-	        System.out.println("PriorityQueue: " + temp);
-	        System.out.println("Parents: " + parents);
-	        System.out.println("Visited: " + visited);
-	        System.out.println("");
+	    	if (!visited.contains(currentPathNode.getU())) {
+		        //String currentNode = currentPathNode.getV();
+		        parents.put(currentPathNode.getU(), currentPathNode.getV());
+		        visited.add(currentPathNode.getU());
+	
+		        //	        return the shortest path if end node is reached
+		        if (currentPathNode.getU().equals(sommet2)) {
+		        	System.out.println("Chemin : " + getPath(parents, sommet2));
+		        	poids = currentPathNode.getPoids() / 10;
+		  	      	break;
+		        }
+	
+		        Collection<Voisin> neighbors = graphe.getVoisins(currentPathNode.getU());
+		        for (Voisin voisin : neighbors) {
+		        	Voisin neighbor = voisin;
+	
+		        	Double distance2root = currentPathNode.getPoids() + neighbor.getPoids();
+		          // PriorityQueue ensure that the node with shortest distance to the root is put at the
+		          // head of the queue
+		        	temp.add(new Arete(neighbor.getEtiquette(), currentPathNode.getU(), distance2root));
+		        }
+	
+		        //System.out.println("current node: " + currentPathNode.getU());
+	//	        System.out.println("PriorityQueue: " + temp);
+	//	        System.out.println("Parents: " + parents);
+	//	        System.out.println("Visited: " + visited);
+	//	        System.out.println("");
 	      }
 	      
 	    }
-	    //System.out.println("Distance entre " + sommet1 + " et " + sommet2 + " : " + temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum());
+	    System.out.println("Distance entre " + sommet1 + " et " + sommet2 + " est de : " + poids +"Km");
 	    //System.out.println(currentNode.getPoids());
 	    //return temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum();
-	    System.out.println(poids);
 	    return poids;
 	}
 	

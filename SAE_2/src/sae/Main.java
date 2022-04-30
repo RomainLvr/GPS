@@ -98,23 +98,23 @@ public class Main {
 		
 		data.close();
 		
-		Graphe grapheM = GrapheParse.parseGraphe(gMatrice.getClass(), fil);
+		//Graphe grapheM = GrapheParse.parseGraphe(gMatrice.getClass(), fil);
 		System.out.println();
 		Graphe grapheL = GrapheParse.parseGraphe(gListe.getClass(), fil);
 		
-		System.out.println(grapheM.getSommets());
-		System.out.println(grapheM.getAretes());
-		System.out.println(grapheL.getSommets());
-		System.out.println(grapheL.getAretes());
+//		System.out.println(grapheM.getSommets());
+//		System.out.println(grapheM.getAretes());
+//		System.out.println(grapheL.getSommets());
+//		System.out.println(grapheL.getAretes());
 		
 		//ParcoursProfondeur pp = new ParcoursProfondeur(grapheM);
 		
-		ParcoursLargeur pl = new ParcoursLargeur(grapheM);
+		//ParcoursLargeur pl = new ParcoursLargeur(grapheM);
 		
 		ParcoursDijkstra pd = new ParcoursDijkstra(grapheL);
 		
 		//pl.existeChemin("Chanu", "Ifs");
-		pd.plusCourtChemin("CONDE-SUR-NOIRE", "CAEN");
+		pd.plusCourtChemin("MARSEILLE-01", "LYON");
 		//pd.plusCourtChemin("Chanu", "Caen");
 		
 		//System.out.println(pl.existeChemin("Chanu", "Ifs"));
