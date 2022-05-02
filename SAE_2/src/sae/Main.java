@@ -24,7 +24,6 @@ public class Main {
 		//gMatrice.displayList();
 		//gListe.displayMatrice();
 		
-		
 		File file = new File(ChooseIHM.dotFileChooser(null));
 			
 		gListe.creerGraphe(GrapheParse.parseAretes(file));
@@ -48,14 +47,9 @@ public class Main {
 				pDijkstra.plusCourtChemin(ville1, ville2) +"Km");
 		pDijkstra.existeChemin(ville1, ville2);
 		
-
-		Scanner ask = new Scanner(System.in);
-		System.out.print("Voulez-vous consulter le chemin ? [y/n] : ");
-		
-		if(ask.hasNext("y"))
+		if(ChooseIHM.seeChemin() == 0)
 			pDijkstra.getChemin(pDijkstra.getParents(), ville2);
 
-		ask.close();
 		
 	}
 
