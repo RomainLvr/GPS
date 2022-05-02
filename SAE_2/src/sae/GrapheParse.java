@@ -33,9 +33,13 @@ public class GrapheParse {
 	        try {
 	        	reader = new BufferedReader(new FileReader(file));
 	            
-	            Set<Arete> arete = reader.lines().skip(1).filter(line -> !line.equals("}"))
-	                    			.map(line -> new Arete(getSommet1(line), getSommet2(line), getPoids(line)))
-	                    			.collect(Collectors.toSet());
+	        	Set<Arete> arete = reader.lines().skip(1).filter(line -> !line.equals("}"))
+	                    .map(line ->
+	                    	new Arete(
+	                    			line.substring(getIndex(line, "\"", 0) + 1, getIndex(line, "\"", 1)),
+	                    			line.substring(getIndex(line, "\"", 2) + 1, getIndex(line, "\"", 3)),
+	                    			Double.parseDouble(line.substring(line.indexOf("=") + 1, line.indexOf(",")))))
+	                    .collect(Collectors.toSet());
 	            
 	            aretes.addAll(arete);
 	        }
@@ -51,26 +55,14 @@ public class GrapheParse {
 	        
 	    }
 
-	    private static String getSommet1(String arete) {
-	        return arete.substring(getIndexOf(arete, "\"", 0) + 1, getIndexOf(arete, "\"", 1));
-	    }
-
-	    private static String getSommet2(String arete) {
-	        return arete.substring(getIndexOf(arete, "\"", 2) + 1, getIndexOf(arete, "\"", 3));
-	    }
-
-	    private static Double getPoids(String arete) {
-	        return Double.parseDouble(arete.substring(arete.indexOf("=") + 1, arete.indexOf(",")));
-	    }
-
-	    private static int getIndexOf(String line, String str, int n) {
-	        int index = line.indexOf(str);
+	    private static int getIndex(String ligne, String str, int a) {
+	        int index = ligne.indexOf(str);
 	        while (index >= 0) {
-	            if (n == 0)
+	            if (a == 0)
 	                return index;
 
-	            n -= 1;
-	            index = line.indexOf(str, index + 1);
+	            a -= 1;
+	            index = ligne.indexOf(str, index + 1);
 	        }
 
 	        return index;
