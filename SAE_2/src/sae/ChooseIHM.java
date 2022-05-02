@@ -68,4 +68,11 @@ public class ChooseIHM {
 		return choix.getSelectedFile().getAbsolutePath();
 	}
 	
+	public static int seeChemin() {
+		
+		int input = JOptionPane.showConfirmDialog(null, "Voulez-vous consulter le chemin ?");
+        // 0=yes, 1=no, 2=cancel
+        return input;
+	    }
+	
 }
