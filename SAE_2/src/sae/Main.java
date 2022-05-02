@@ -6,11 +6,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 import sae.graphe.GrapheListe;
-import sae.graphe.GrapheMatrice;
+//import sae.graphe.GrapheMatrice;
 import sae.parcours.ParcoursDijkstra;
-import sae.parcours.ParcoursLargeur;
-import sae.parcours.ParcoursProfondeur;
-import sae2_2.Graphe;
+
 
 public class Main {
 
@@ -18,118 +16,46 @@ public class Main {
 		
 		
 		
-		GrapheMatrice gMatrice = new GrapheMatrice();
+		//GrapheMatrice gMatrice = new GrapheMatrice();
 		
 		GrapheListe gListe = new GrapheListe();
-		/*
-		gMatrice.ajouteSommet("a");
-		gMatrice.ajouteSommet("b");
-		gMatrice.ajouteSommet("c");
-		gMatrice.ajouteSommet("d");
-		
-		gMatrice.ajouteArete("a", "d", 4.2);
-		gMatrice.ajouteArete("d", "b", 2.6);
-		gMatrice.ajouteArete("c", "a", 1.2);
-		gMatrice.ajouteArete("c", "b", 8.3);
-		
-		gMatrice.ajouteSommet("e");
-		gMatrice.ajouteSommet("f");
-		gMatrice.ajouteSommet("g");
-		gMatrice.ajouteSommet("h");
-		
-		gMatrice.ajouteArete("a", "f", 3.7);
-		gMatrice.ajouteArete("d", "g", 6.1);
-		gMatrice.ajouteArete("b", "h", 9.5);
-		gMatrice.ajouteArete("c", "e", 7.0);
-		
-		gListe.ajouteSommet("a");
-		gListe.ajouteSommet("b");
-		gListe.ajouteSommet("c");
-		gListe.ajouteSommet("d");
-		
-		gListe.ajouteArete("a", "d", 4.2);
-		gListe.ajouteArete("d", "b", 2.6);
-		gListe.ajouteArete("c", "a", 1.2);
-		gListe.ajouteArete("c", "b", 8.3);
-		
-		gListe.ajouteSommet("e");
-		gListe.ajouteSommet("f");
-		gListe.ajouteSommet("g");
-		gListe.ajouteSommet("h");
-		
-		gListe.ajouteArete("a", "f", 3.7);
-		gListe.ajouteArete("d", "g", 6.1);
-		gListe.ajouteArete("b", "h", 9.5);
-		gListe.ajouteArete("c", "e", 7.0);
-
-
-		
-		//gMatrice.ajouteArete("d", "b", 4.0);
-		//.ajouteArete("b", "d", 2.0);
-		//gMatrice.ajouteArete("c", "a", 3.0);
-		
-		gMatrice.displayList();
-		gListe.displayMatrice();
-		
-		System.out.println();
-		
-		System.out.println(gMatrice.getAretes());
-		System.out.println(gMatrice.getSommets());
-		System.out.println(gMatrice.getVoisins("a"));
-		System.out.println(gMatrice.sontVoisins("c", "a"));
-		
-		System.out.println();
-		
-		System.out.println(gListe.getAretes());
-		System.out.println(gListe.getSommets());
-		System.out.println(gListe.getVoisins("a"));
-		System.out.println(gListe.sontVoisins("a", "c"));
-		
-		GrapheParse parse = new GrapheParse();
-		*/
 		
 		
-		Scanner data = new Scanner(System.in);
-		String fileString = data.next();
-            
-		File file = new File("/home/romain/Bureau/SAE_2/Docs/ReseauxRoutiers/" + fileString);
-		//File fil = new File("/home/romain/Bureau/SAE_2/Docs/donneesArtificielles/" + file);
-
+		//gMatrice.displayList();
+		//gListe.displayMatrice();
 		
-		data.close();
 		
-		//Graphe grapheM = GrapheParse.parseGraphe(gMatrice.getClass(), fil);
-		System.out.println();
-		//Graphe grapheL = GrapheParse.parseGraphe(gListe.getClass(), fil);
-		
+		File file = new File(ChooseIHM.dotFileChooser(null));
+			
 		gListe.creerGraphe(GrapheParse.parseAretes(file));
+			
+		//gMatrice.creerGraphe(GrapheParse.parseAretes(file));
+
+		System.out.println();
+
+		//ParcoursProfondeur pp = new ParcoursProfondeur(gliste);
+			
+		//ParcoursLargeur pl = new ParcoursLargeur(gMatrice);
+
+		ParcoursDijkstra pDijkstra = new ParcoursDijkstra(gListe);
+
 		
-//		System.out.println(grapheM.getSommets());
-//		System.out.println(grapheM.getAretes());
-//		System.out.println(grapheL.getSommets());
-//		System.out.println(grapheL.getAretes());
+		String ville1 = ChooseIHM.choisirVilleDepart(gListe.getSommets());
+		String ville2 = ChooseIHM.choisirVilleArrivee(gListe.getSommets());
+		System.out.println("Distance entre " +
+				ville1 + " et " +
+				ville2 + " est de : "+
+				pDijkstra.plusCourtChemin(ville1, ville2) +"Km");
+		pDijkstra.existeChemin(ville1, ville2);
 		
-		//ParcoursProfondeur pp = new ParcoursProfondeur(grapheM);
+
+		Scanner ask = new Scanner(System.in);
+		System.out.print("Voulez-vous consulter le chemin ? [y/n] : ");
 		
-		//ParcoursLargeur pl = new ParcoursLargeur(grapheM);
-		
-		ParcoursDijkstra pd = new ParcoursDijkstra(gListe);
-		
-		//pl.existeChemin("Chanu", "Ifs");
-		pd.plusCourtChemin("FALAISE", "CAEN");
-		//pd.plusCourtChemin("Chanu", "Caen");
-		
-		//System.out.println(pl.existeChemin("Chanu", "Ifs"));
-		//System.out.println(pl.plusCourtChemin("Chanu", "Ifs"));
-		
-		//GrapheListe gliste = new GrapheListe();
-		
-		//gliste.ajouteSommet("a");
-		//gliste.ajouteSommet("b");
-		//gliste.ajouteSommet("c");
-		//gliste.ajouteSommet("d");
-		//gliste.ajouteArete("a", "b", 2);
-		//gliste.displayList();
+		if(ask.hasNext("y"))
+			pDijkstra.getChemin(pDijkstra.getParents(), ville2);
+
+		ask.close();
 		
 	}
 

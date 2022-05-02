@@ -60,9 +60,9 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 		        parents.put(noeudActuel.getU(), noeudActuel.getV());
 		        checked.add(noeudActuel.getU());
 	
-		        //	        return the shortest path if end node is reached
+		        //	Si le sommet2 est atteint, retourner le poids (et le chemin)
 		        if (noeudActuel.getU().equals(sommet2)) {
-		        	System.out.println("Chemin : " + getChemin(parents, sommet2));
+		        	
 		        	poids = noeudActuel.getPoids() / 10;
 		  	      	break;
 		        }
@@ -72,35 +72,44 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 		        	Voisin voisin = voisinElement;
 	
 		        	Double poidsEntreSommets = noeudActuel.getPoids() + voisin.getPoids();
-		          // PriorityQueue ensure that the node with shortest distance to the root is put at the
-		          // head of the queue
+		          // temp fait en sorte que le noeud avec la plus courte distance soit mise
+		          // en tête de liste
 		        	temp.add(new Arete(voisin.getEtiquette(), noeudActuel.getU(), poidsEntreSommets));
 		        }
 	
-		        //System.out.println("current node: " + currentPathNode.getU());
 	//	        System.out.println("PriorityQueue: " + temp);
 	//	        System.out.println("Parents: " + parents);
-	//	        System.out.println("Visited: " + visited);
+	//	        System.out.println("Visited: " + checked);
 	//	        System.out.println("");
 	      }
 	      
 	    }
-	    System.out.println("Distance entre " + sommet1 + " et " + sommet2 + " est de : " + poids +"Km");
+	    
 	    //System.out.println(currentNode.getPoids());
 	    //return temp.stream().map(Arete::getPoids).mapToDouble(Double::doubleValue).sum();
 	    return poids;
 	}
 	
+	public Map<String, String> getParents(){
+		
+		return parents;	
+	}
 	
-	 private List<String> getChemin(Map<String, String> parents, String sommet2) {
-		    List<String> chemin = new ArrayList<String>();
-		    String sommet = sommet2;
-		    while (sommet != null) {
-		    	chemin.add(0, sommet);
-		      String parent = parents.get(sommet);
-		      sommet = parent;
-		    }
-		    return chemin;
-		  }
+	 public void getChemin(Map<String, String> parents, String sommet2) {
+		  System.out.print("Chemin : ");
+			List<String> chemin = new ArrayList<String>();
+			String sommet = sommet2;
+			while (sommet != null) {
+				chemin.add(0, sommet);
+				//System.out.print(sommet + " -> ");
+				String parent = parents.get(sommet);
+				sommet = parent;
+			}
+			for(String element : chemin) {
+			    	
+				if(element == sommet2) System.out.println(element);
+				else System.out.print(element + " -> ");	
+			}
+	 }
 
 }
