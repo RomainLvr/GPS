@@ -90,9 +90,9 @@ public class Main {
 		
 		
 		Scanner data = new Scanner(System.in);
-		String file = data.next();
+		String fileString = data.next();
             
-		File fil = new File("/home/romain/Bureau/SAE_2/Docs/ReseauxRoutiers/" + file);
+		File file = new File("/home/romain/Bureau/SAE_2/Docs/ReseauxRoutiers/" + fileString);
 		//File fil = new File("/home/romain/Bureau/SAE_2/Docs/donneesArtificielles/" + file);
 
 		
@@ -100,7 +100,9 @@ public class Main {
 		
 		//Graphe grapheM = GrapheParse.parseGraphe(gMatrice.getClass(), fil);
 		System.out.println();
-		Graphe grapheL = GrapheParse.parseGraphe(gListe.getClass(), fil);
+		//Graphe grapheL = GrapheParse.parseGraphe(gListe.getClass(), fil);
+		
+		gListe.creerGraphe(GrapheParse.parseAretes(file));
 		
 //		System.out.println(grapheM.getSommets());
 //		System.out.println(grapheM.getAretes());
@@ -111,10 +113,10 @@ public class Main {
 		
 		//ParcoursLargeur pl = new ParcoursLargeur(grapheM);
 		
-		ParcoursDijkstra pd = new ParcoursDijkstra(grapheL);
+		ParcoursDijkstra pd = new ParcoursDijkstra(gListe);
 		
 		//pl.existeChemin("Chanu", "Ifs");
-		pd.plusCourtChemin("MARSEILLE-01", "LYON");
+		pd.plusCourtChemin("FALAISE", "CAEN");
 		//pd.plusCourtChemin("Chanu", "Caen");
 		
 		//System.out.println(pl.existeChemin("Chanu", "Ifs"));
