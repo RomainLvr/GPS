@@ -6,46 +6,47 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import sae2_2.Arete;
-import sae2_2.Graphe;
-
 
 
 public class GrapheParse {
 	
 
-	    public static Graphe parseGraphe(Class<? extends Graphe> clazz, File file) throws IOException,
+	    public static Collection<Arete> parseAretes(File file) throws IOException,
 	    																				  InvocationTargetException,
 	    																				  InstantiationException,
 	    																				  IllegalAccessException,
 	    																				  IllegalArgumentException,
 	    																				  NoSuchMethodException,
-	    																				  SecurityException {
-	        
-	    	Graphe graphe = clazz.getConstructor().newInstance();
-	        BufferedReader br = null;
+	    																				  SecurityException
+	    {
+
+	    	ArrayList<Arete> aretes = new ArrayList<Arete>();
+	    	
+	    	BufferedReader reader = null;
 
 	        try {
-	            br = new BufferedReader(new FileReader(file));
+	        	reader = new BufferedReader(new FileReader(file));
 	            
-	            Set<Arete> aretes = br.lines().skip(1).filter(line -> !line.equals("}"))
+	            Set<Arete> arete = reader.lines().skip(1).filter(line -> !line.equals("}"))
 	                    			.map(line -> new Arete(getSommet1(line), getSommet2(line), getPoids(line)))
 	                    			.collect(Collectors.toSet());
 	            
-	            graphe.creerGraphe(aretes);
-	            
+	            aretes.addAll(arete);
 	        }
 	        
 	        finally {
 	            
-	        	if (br != null)
-	                br.close();
+	        	if (reader != null)
+	        		reader.close();
 	        }
 
-	        return graphe;
+	        return aretes;
 	        
 	        
 	    }
