@@ -1,26 +1,27 @@
 package sae;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.FileFilter;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.PriorityQueue;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+
 public class ChooseIHM {
 
-	private static String parent;
 
 	public static String choisirVilleDepart(Collection<String> villes) {
-        PriorityQueue<String> optionsToChoose = new PriorityQueue<String>();
+        List<String> optionsToChoose = new ArrayList<String>();
         
         for(String ville : villes) {
         	optionsToChoose.add(ville);
         }
+        
+        Collections.sort(optionsToChoose);
         
         
         String getVille = (String) JOptionPane.showInputDialog(
@@ -35,12 +36,13 @@ public class ChooseIHM {
     }
 	
 	public static String choisirVilleArrivee(Collection<String> villes) {
-        PriorityQueue<String> optionsToChoose = new PriorityQueue<String>();
+        List<String> optionsToChoose = new ArrayList<String>();
         
         for(String ville : villes) {
         	optionsToChoose.add(ville);
         }
         
+        Collections.sort(optionsToChoose);
         
         String getVille = (String) JOptionPane.showInputDialog(
                 null,
@@ -52,6 +54,7 @@ public class ChooseIHM {
         
         return getVille;
     }
+	@SuppressWarnings("exports")
 	
 	public static String dotFileChooser(Component parent)  {
 		
@@ -68,11 +71,16 @@ public class ChooseIHM {
 		return choix.getSelectedFile().getAbsolutePath();
 	}
 	
-	public static int seeChemin() {
+	public static int boxChooser(String message) {
 		
-		int input = JOptionPane.showConfirmDialog(null, "Voulez-vous consulter le chemin ?");
+		int input = JOptionPane.showConfirmDialog(null, message);
         // 0=yes, 1=no, 2=cancel
         return input;
-	    }
+	}
+	
+	public static void displayMessage(String message) {
+		
+		JOptionPane.showMessageDialog(null, message);
+    }
 	
 }
