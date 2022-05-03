@@ -27,13 +27,13 @@ public class GrapheMatrice implements Graphe{
 	public void ajouteArete(String sommet1, String sommet2, double poids) {
 	
 		if(dictionnaireDeSommets.containsKey(sommet1) == false) {
-			System.out.println("Le sommet " + sommet1 + " n'existe pas.");
-			System.out.println("Création du sommet automatiquement...");
+			//Le sommet1 n'existe pas.
+			//Création du sommet automatiquement
 			ajouteSommet(sommet1);
 		}
 		if(dictionnaireDeSommets.containsKey(sommet2) == false) {
-			System.out.println("Le sommet " + sommet2 + " n'existe pas.");
-			System.out.println("Création du sommet automatiquement...");
+			//Le sommet2 n'existe pas.
+			//Création du sommet automatiquement
 			ajouteSommet(sommet2);
 		}
 		
@@ -44,7 +44,6 @@ public class GrapheMatrice implements Graphe{
 			addArete = matriceDAdjacence.get(dictionnaireDeSommets.get(sommet2));
 			addArete.set(dictionnaireDeSommets.get(sommet1), poids);
 			
-			System.out.println("L'arête entre les sommets " + sommet1 + " et " + sommet2 + " de poids " + poids + " à bien été créée.");
 		}
 	}
 
@@ -53,7 +52,7 @@ public class GrapheMatrice implements Graphe{
 		
 		if(dictionnaireDeSommets.containsKey(etiquette)) {
 			
-			//System.out.println("Le sommet " + etiquette + " existe déjà.");
+			//Le sommet existe déjà.
 		}
 		
 		else {
@@ -72,15 +71,12 @@ public class GrapheMatrice implements Graphe{
 					update.add(null);
 				}
 		    }	
-			System.out.println("le sommet '" + etiquette + "' a bien été crée");
 		}
 	}
 
 	@Override
 	public void creerGraphe(Collection<Arete> aretes) {
 		
-		System.out.println("Création du Graphe...");
-
 		for(Arete arete : aretes) {
 	        ajouteSommet(arete.getU());
 			ajouteSommet(arete.getV());
@@ -88,11 +84,7 @@ public class GrapheMatrice implements Graphe{
 		
 		for(Arete arete : aretes)
 	        ajouteArete(arete.getU(), arete.getV(), arete.getPoids());
-		
-		System.out.println();
-		
-		displayMatrice();
-		
+						
 	}
 
 	@Override

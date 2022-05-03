@@ -26,13 +26,13 @@ public class GrapheListe implements Graphe{
 		Arete edge2 = new Arete(sommet2, sommet1, poids);
 		
 		if(listeDAdjacence.containsKey(sommet1) == false) {
-			System.out.println("Le sommet " + sommet1 + " n'existe pas.");
-			System.out.println("Création du sommet automatiquement...");
+			//Le sommet1 n'existe pas
+			//Création du sommet automatiquement
 			ajouteSommet(sommet1);
 		}
 		if(listeDAdjacence.containsKey(sommet2) == false) {
-			System.out.println("Le sommet " + sommet2 + " n'existe pas.");
-			System.out.println("Création du sommet automatiquement...");
+			//Le sommet2 n'existe pas
+			//Création du sommet automatiquement
 			ajouteSommet(sommet2);
 		}
 			
@@ -51,45 +51,32 @@ public class GrapheListe implements Graphe{
 		            listeDAdjacence.put(sommet2, arete2);
 		        }
 		        arete2.add(edge2);
-	        
-	        if(listeDAdjacence.get(sommet1).contains(edge1) == true && listeDAdjacence.get(sommet2).contains(edge2) == true) {
-	        	
-	        	System.out.println("Les aretes " + edge1 + 
-	        					   " et " + edge2 + " ont bien été crées.");
-	        }
+
 	}
 
 	@Override
 	public void ajouteSommet(String etiquette) {
 
 		if(listeDAdjacence.containsKey(etiquette)) {
-			//System.out.println("Le sommet " + etiquette + " existe déjà.");
+			//Le sommet existe déjà.
 		}
 		
 		else {
-			listeDAdjacence.put(etiquette, new ArrayList<Arete>());
-			System.out.println("le sommet '" + etiquette + "' a bien été crée");
 			
+			listeDAdjacence.put(etiquette, new ArrayList<Arete>());	
 		}
 	}
 	
 	@Override
 	public void creerGraphe(Collection<Arete> aretes) {
-		
-		System.out.println("Création du Graphe...");
-		
+				
 		for(Arete arete : aretes) {
 	        ajouteSommet(arete.getU());
 			ajouteSommet(arete.getV());
 		}
 		
 		for(Arete arete : aretes)
-	        ajouteArete(arete.getU(), arete.getV(), arete.getPoids());
-		
-		System.out.println();
-		
-		//displayList();
-		
+	        ajouteArete(arete.getU(), arete.getV(), arete.getPoids());	
 	}
 
 	@Override
@@ -141,8 +128,6 @@ public class GrapheListe implements Graphe{
 
 	
 	public void displayList() {
-
-		//System.out.println(Collections.singletonList(listeDAdjacence));
 		
 		for (Entry<String, Collection<Arete>> mapentry : listeDAdjacence.entrySet()) {
 			
