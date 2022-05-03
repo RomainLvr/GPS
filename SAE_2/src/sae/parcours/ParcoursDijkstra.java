@@ -95,8 +95,9 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 		return parents;	
 	}
 	
-	 public void getChemin(Map<String, String> parents, String sommet2) {
+	 public String getChemin(Map<String, String> parents, String sommet2) {
 		  System.out.print("Chemin : ");
+		  String test = null;
 			List<String> chemin = new ArrayList<String>();
 			String sommet = sommet2;
 			while (sommet != null) {
@@ -108,8 +109,10 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 			for(String element : chemin) {
 			    	
 				if(element == sommet2) System.out.println(element);
-				else System.out.print(element + " -> ");	
+				else System.out.print(element + " -> ");
+				test = element.toString();	
 			}
+			return test;
 	 }
 
 }
