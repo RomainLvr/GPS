@@ -88,7 +88,7 @@ public class Main {
 			pDijkstra.existeChemin(args[1], args[2]);
 			
 			Scanner scan = new Scanner(System.in);
-			System.out.println("Souhaitez vous visulaiser le chemin ?");
+			System.out.print("Souhaitez vous visulaiser le chemin ? [y/n] : ");
 			if(scan.hasNext("y"))
 				pDijkstra.getChemin(pDijkstra.getParents(), args[2]);
 			scan.close();
