@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +26,8 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 		}
 	};
     
-	Map<String, String> parents = new HashMap<String, String>();
-	Set<String> checked = new HashSet<String>();
-	PriorityQueue<Arete> temp = new PriorityQueue<Arete>(aretesComparator);
 	
+	Map<String, String> parentsGet = new HashMap<String, String>();
 	
 	public ParcoursDijkstra(Graphe graphe) {
 		
@@ -39,7 +38,7 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	public boolean existeChemin(String sommet1, String sommet2) {
 		
 		Boolean temoin = false;
-		if(plusCourtChemin(sommet1, sommet2) == null)
+		if(plusCourtChemin(sommet1, sommet2) != null)
 			temoin = true;
 		return temoin;
 	}
@@ -47,6 +46,10 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	@Override
 	public Double plusCourtChemin(String sommet1, String sommet2) {
 		
+		Map<String, String> parents = new HashMap<String, String>();
+		Set<String> checked = new HashSet<String>();
+		PriorityQueue<Arete> temp = new PriorityQueue<Arete>(aretesComparator);
+		parentsGet.clear();
 		Double poids = null;
 	    Arete startArete = new Arete(sommet1, null, 0);
 	    temp.add(startArete);
@@ -62,7 +65,7 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	
 		        //	Si le sommet2 est atteint, retourner le poids (et le chemin)
 		        if (noeudActuel.getU().equals(sommet2)) {
-		        	
+		        	parentsGet = parents;
 		        	poids = noeudActuel.getPoids() / 10;
 		  	      	break;
 		        }
@@ -92,12 +95,12 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	
 	public Map<String, String> getParents(){
 		
-		return parents;	
+		return parentsGet;	
 	}
 	
 	 public String getChemin(Map<String, String> parents, String sommet2) {
 		  System.out.print("Chemin : ");
-		  String test = null;
+		  List<String> villes = new ArrayList<String>();
 			List<String> chemin = new ArrayList<String>();
 			String sommet = sommet2;
 			while (sommet != null) {
@@ -106,13 +109,10 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 				String parent = parents.get(sommet);
 				sommet = parent;
 			}
-			for(String element : chemin) {
-			    	
-				if(element == sommet2) System.out.println(element);
-				else System.out.print(element + " -> ");
-				test = element.toString();	
+			for(String element : chemin) {		    	
+				villes.add(element);					
 			}
-			return test;
+			return villes.stream().collect(Collectors.joining(" -> "));
 	 }
 
 }
