@@ -50,14 +50,21 @@ public class Main {
 			
 			String ville1 = ChooseIHM.choisirVilleDepart(gListe.getSommets());
 			String ville2 = ChooseIHM.choisirVilleArrivee(gListe.getSommets());
-			System.out.println("Distance entre " +
-					ville1 + " et " +
-					ville2 + " est de : "+
-					pDijkstra.plusCourtChemin(ville1, ville2) +"Km");
-			pDijkstra.existeChemin(ville1, ville2);
 			
-			if(ChooseIHM.boxChooser("Voulez-vous consulter le chemin ?") == 0)
-				pDijkstra.getChemin(pDijkstra.getParents(), ville2);
+			
+			if(pDijkstra.existeChemin(ville1, ville2)) {
+				
+				
+				ChooseIHM.displayMessage("La distance entre " +ville1 + " et " + ville2 + " est de : " + pDijkstra.plusCourtChemin(ville1, ville2) +" Km.");
+			
+				if(ChooseIHM.boxChooser("Voulez-vous consulter le chemin ?") == 0)
+					ChooseIHM.displayMessage(pDijkstra.getChemin(pDijkstra.getParents(), ville2));
+			}
+			else
+				ChooseIHM.displayMessage("Aucun chemin n'existe entre " + ville1 + " et " + ville2);
+
+			
+			
 		}
 		else {
 			File file = null;
