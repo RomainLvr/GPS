@@ -40,7 +40,7 @@ public class ParcoursProfondeur extends ParcoursGraphe{
 		
 			unchecked.add(new Voisin(sommet1, 0));
 		
-		while(unchecked.isEmpty() == false) {
+		while(!unchecked.isEmpty()) {
 			
 			Voisin voisin = unchecked.remove(0);
 			
@@ -52,7 +52,7 @@ public class ParcoursProfondeur extends ParcoursGraphe{
 			
 			System.out.println(checked.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2)));
 			if(checked.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2))) {
-				System.out.println(checked.size());
+				System.out.println(checked.toString());
 				System.out.println("Taille : " + checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum());
 				return checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum();
 			}
