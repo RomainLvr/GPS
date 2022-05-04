@@ -3,12 +3,16 @@ package sae;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import sae.graphe.GrapheListe;
 //import sae.graphe.GrapheMatrice;
 import sae.parcours.ParcoursDijkstra;
 import sae.parcours.ParcoursLargeur;
+import sae2_2.Arete;
 
 
 
@@ -27,7 +31,9 @@ public class Main {
 		
 		ParcoursLargeur pLargeur = new ParcoursLargeur(gListe);
 		
-		System.out.println(pLargeur.plusCourtChemin("CONDE-SUR-NOIRE", "CAEN") / 10 +" Km");
+		System.out.println(pLargeur.plusCourtChemin("ROUEN", "CAEN") / 10 +" Km");
+		
+			
 
 //		if(ChooseIHM.boxChooser("Voulez-vous utiliser le mode graphique ?") == 0) {
 //		
