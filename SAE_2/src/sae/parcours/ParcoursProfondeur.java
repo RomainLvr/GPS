@@ -50,10 +50,7 @@ public class ParcoursProfondeur extends ParcoursGraphe{
 			checked.add(voisin);
 			unchecked.addAll(0, newCheck);
 			
-			System.out.println(checked.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2)));
 			if(checked.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2))) {
-				System.out.println(checked.toString());
-				System.out.println("Taille : " + checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum());
 				return checked.stream().map(Voisin::getPoids).mapToDouble(Double::doubleValue).sum();
 			}
 		}
