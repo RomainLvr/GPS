@@ -18,12 +18,12 @@ public class GrapheParse {
 	
 
 	    public static Collection<Arete> parseAretes(File file) throws IOException,
-	    																				  InvocationTargetException,
-	    																				  InstantiationException,
-	    																				  IllegalAccessException,
-	    																				  IllegalArgumentException,
-	    																				  NoSuchMethodException,
-	    																				  SecurityException
+	    															  InvocationTargetException,
+	    															  InstantiationException,
+	    															  IllegalAccessException,
+	    															  IllegalArgumentException,
+	    															  NoSuchMethodException,
+	    															  SecurityException
 	    {
 
 	    	ArrayList<Arete> aretes = new ArrayList<Arete>();
@@ -42,29 +42,25 @@ public class GrapheParse {
 	                    .collect(Collectors.toSet());
 	            
 	            aretes.addAll(arete);
-	        }
-	        
+	        }      
 	        finally {
 	            
 	        	if (reader != null)
 	        		reader.close();
 	        }
-
 	        return aretes;
-	        
-	        
 	    }
 
-	    private static int getIndex(String ligne, String str, int a) {
-	        int index = ligne.indexOf(str);
+	    private static int getIndex(String ligne, String string, int a) {
+	        
+	    	int index = ligne.indexOf(string);
 	        while (index >= 0) {
 	            if (a == 0)
 	                return index;
 
 	            a -= 1;
-	            index = ligne.indexOf(str, index + 1);
+	            index = ligne.indexOf(string, index + 1);
 	        }
-
 	        return index;
 	    }
 
