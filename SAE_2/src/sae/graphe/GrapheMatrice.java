@@ -77,13 +77,14 @@ public class GrapheMatrice implements Graphe{
 	@Override
 	public void creerGraphe(Collection<Arete> aretes) {
 		
-		for(Arete arete : aretes) {
-	        ajouteSommet(arete.getU());
+		aretes.forEach(arete -> {
+			ajouteSommet(arete.getU());
 			ajouteSommet(arete.getV());
-		}
+		});
 		
-		for(Arete arete : aretes)
-	        ajouteArete(arete.getU(), arete.getV(), arete.getPoids());
+		aretes.forEach(arete -> {
+			ajouteArete(arete.getU(), arete.getV(), arete.getPoids());
+		});
 						
 	}
 

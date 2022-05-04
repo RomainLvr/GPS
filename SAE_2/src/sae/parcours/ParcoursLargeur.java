@@ -64,12 +64,12 @@ public class ParcoursLargeur extends ParcoursGraphe{
 	    		}
 	    	}
 	    	
+	    	
+	    	
 	    	temp.removeFirst();
 	    	file.add(currentVoisin);
-	    	System.out.println(currentVoisin.getEtiquette());
 	    	
 	    	if(file.stream().map(Voisin::getEtiquette).anyMatch(s -> s.equals(sommet2))) {
-	    		System.out.println("FIN : "+currentVoisin.getEtiquette());
 	    		break;
 	    	}
 	    }
