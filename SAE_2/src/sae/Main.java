@@ -52,7 +52,9 @@ public class Main {
 			try {
 				file = new File(args[0]);
 			}catch(Exception e) {
-				System.out.println("Fichier inexistant");
+				System.out.println("Fichier inexistant.");
+				System.out.println("Si vous ne souhaitez pas utiliser le mode graphique, executez :\n" +
+								   "java -jar <file.jar> </path/to/.dotFile> <villeDeDepart> <villeDArivee>");
 				return;
 			}
 			
