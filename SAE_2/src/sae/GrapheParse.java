@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
@@ -17,13 +16,7 @@ import sae2_2.Arete;
 public class GrapheParse {
 	
 
-	    public static Collection<Arete> parseAretes(File file) throws IOException,
-	    															  InvocationTargetException,
-	    															  InstantiationException,
-	    															  IllegalAccessException,
-	    															  IllegalArgumentException,
-	    															  NoSuchMethodException,
-	    															  SecurityException
+	    public static Collection<Arete> parseAretes(File file) throws IOException
 	    {
 
 	    	ArrayList<Arete> aretes = new ArrayList<Arete>();
