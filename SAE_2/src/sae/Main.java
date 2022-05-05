@@ -39,7 +39,7 @@ public class Main {
 				ChooseIHM.displayMessage("La distance entre " +ville1 + " et " + ville2 + " est de : " + pDijkstra.plusCourtChemin(ville1, ville2) +" Km.");
 			
 				if(ChooseIHM.boxChooser("Voulez-vous consulter le chemin ?") == 0)
-					ChooseIHM.displayMessage(pDijkstra.getChemin(pDijkstra.getParents(), ville2));
+					ChooseIHM.displayMessage("Chemin : " + pDijkstra.getChemin(pDijkstra.getParents(), ville2));
 			}
 			else
 				ChooseIHM.displayMessage("Aucun chemin n'existe entre " + ville1 + " et " + ville2);
@@ -77,7 +77,7 @@ public class Main {
 				
 			    String test = scan.next();
 			    if(test.equals("o")) {
-			    	System.out.println(pDijkstra.getChemin(pDijkstra.getParents(), args[2]));
+			    	System.out.println("Chemin : " + pDijkstra.getChemin(pDijkstra.getParents(), args[2]));
 			        break;
 			    }
 			    else if(test.equals("n"))
