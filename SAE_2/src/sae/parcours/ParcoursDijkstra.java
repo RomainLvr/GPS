@@ -99,7 +99,6 @@ public class ParcoursDijkstra extends ParcoursGraphe{
 	}
 	
 	 public String getChemin(Map<String, String> parents, String sommet2) {
-		  System.out.print("Chemin : ");
 		  List<String> villes = new ArrayList<String>();
 			List<String> chemin = new ArrayList<String>();
 			String sommet = sommet2;
