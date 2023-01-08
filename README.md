@@ -12,7 +12,7 @@
 <br/>
 <div align="center">
   <a href="https://github.com/RomainLvr/GPS">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">GPS</h3>
@@ -56,23 +56,23 @@ Dijkstra and depth-first and breadth-first traversals were the main algorithms u
 <!-- USAGE EXAMPLES -->
 ## Choose a .dot file
 
-<img src="images/chooseDot.png" width="300" height="300">
+<img src="images/chooseDot.png">
 
 ## Select the starting city
 
-<img src="images/startCity.png" width="300" height="300">
+<img src="images/startCity.png">
 
 ## Select the destination city
 
-<img src="images/finalCity.png" width="300" height="300">
+<img src="images/finalCity.png">
 
 ## Then the distance between the two cities is calculated
 
-<img src="images/distance.png" width="300" height="300">
+<img src="images/distance.png">
 
 ## View the path details
 
-<img src="images/path.png" width="300" height="300">
+<img src="images/path.png">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
