@@ -56,23 +56,23 @@ Dijkstra and depth-first and breadth-first traversals were the main algorithms u
 <!-- USAGE EXAMPLES -->
 ## Choose a .dot file
 
-<img src="images/chooseDot.png" width="80" height="80">
+<img src="images/chooseDot.png" width="300" height="300">
 
 ## Select the starting city
 
-<img src="images/startCity.png" width="80" height="80">
+<img src="images/startCity.png" width="300" height="300">
 
 ## Select the destination city
 
-<img src="images/finalCity.png" width="80" height="80">
+<img src="images/finalCity.png" width="300" height="300">
 
 ## Then the distance between the two cities is calculated
 
-<img src="images/distance.png" width="80" height="80">
+<img src="images/distance.png" width="300" height="300">
 
 ## View the path details
 
-<img src="images/path.png" width="80" height="80">
+<img src="images/path.png" width="300" height="300">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
