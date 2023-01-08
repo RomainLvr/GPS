@@ -100,5 +100,5 @@ Project Link: [https://github.com/RomainLvr/GPS](https://github.com/ROmainLvr/GP
 [license-shield]: https://img.shields.io/github/license/RomainLvr/GPS.svg?style=for-the-badge
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/romain-lecouvreur-1848b2239
-[Java]: [https://img.shields.io/badge/java-000000?style=for-the-badge&logo=java&logoColor=white](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
+[Java]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white
 [Java-url]: https://www.java.com/fr/
