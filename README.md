@@ -17,6 +17,7 @@
 
   <h3 align="center">GPS</h3>
  </div>
+ <br/>
 
 
 <!-- TABLE OF CONTENTS -->
@@ -48,12 +49,15 @@ Dijkstra and depth-first and breadth-first traversals were the main algorithms u
 
 ### Built With
 
-* [![Next][Java]][Java-url]
+* [![Java][Java]][Java-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- USAGE EXAMPLES -->
+
+### Usage
+
 ## Choose a .dot file
 
 <img src="images/chooseDot.png">
@@ -81,6 +85,20 @@ Dijkstra and depth-first and breadth-first traversals were the main algorithms u
 
 Romain LECOUVREUR - [@LinkedIn](https://www.linkedin.com/in/romain-lecouvreur-1848b2239/) - lecouvreurromain@gmail.com
 
-Project Link: [https://github.com/ROmainLvr/GPS](https://github.com/ROmainLvr/GPS)
+Project Link: [https://github.com/RomainLvr/GPS](https://github.com/ROmainLvr/GPS)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[contributors-shield]: https://img.shields.io/github/contributors/RomainLvr/GPS.svg?style=for-the-badge
+[contributors-url]: https://github.com/RomainLvr/GPS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/RomainLvr/GPS.svg?style=for-the-badge
+[forks-url]: https://github.com/RomainLvr/GPS/network/members
+[stars-shield]: https://img.shields.io/github/stars/RomainLvr/GPS.svg?style=for-the-badge
+[stars-url]: https://github.com/RomainLvr/GPS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/RomainLvr/GPS.svg?style=for-the-badge
+[issues-url]: https://github.com/RomainLvr/GPS/issues
+[license-shield]: https://img.shields.io/github/license/RomainLvr/GPS.svg?style=for-the-badge
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew](https://www.linkedin.com/in/romain-lecouvreur-1848b2239
+[Java]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Java-url]: https://nextjs.org/
