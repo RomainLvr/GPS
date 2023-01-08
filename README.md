@@ -99,6 +99,6 @@ Project Link: [https://github.com/RomainLvr/GPS](https://github.com/ROmainLvr/GP
 [issues-url]: https://github.com/RomainLvr/GPS/issues
 [license-shield]: https://img.shields.io/github/license/RomainLvr/GPS.svg?style=for-the-badge
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew](https://www.linkedin.com/in/romain-lecouvreur-1848b2239
+[linkedin-url]: https://www.linkedin.com/in/romain-lecouvreur-1848b2239
 [Java]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Java-url]: https://nextjs.org/
